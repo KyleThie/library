@@ -1,15 +1,43 @@
 console.log("is it working?");
 let cardContainer = document.getElementById("card-container");
+let addBtn = document.querySelector("#addBtn");
+titleField = document.querySelector("#title");
+authorField = document.querySelector("#author");
+pageNumField = document.querySelector("#pageNum");
+readField = document.querySelector("#checkBox");
+
+let newTitle = "";
+let newAuthor = "";
+let pageNums = null;
+let read = null;
+
+titleField.addEventListener("input", (e) => {
+  newTitle = e.target.value;
+});
+
+authorField.addEventListener("input", (e) => {
+  newAuthor = e.target.value;
+});
+
+pageNumField.addEventListener("input", (e) => {
+  pageNums = e.target.value;
+});
+
+readField.addEventListener("input", (e) => {
+  read = e.target.value;
+});
+
+addBtn.addEventListener("click", () => {
+  event.preventDefault();
+
+  addBookToLibrary(newTitle, newAuthor, pageNums, read);
+  console.log(myLibrary);
+  showBooks();
+  let formById = document.getElementById("formId");
+  formById.reset();
+  console.log(formById);
+});
 let myLibrary = [];
-
-// Testing appending a card
-
-// let card = document.createElement("div");
-// card.className = "testCard";
-// card.innerHTML = "fs;ae";
-
-// cardContainer.appendChild(card);
-console.log("cardContainer:", cardContainer);
 
 class Book {
   constructor(title, author, pages, read) {
@@ -46,4 +74,4 @@ function showBooks() {
   });
 }
 
-showBooks();
+console.log(titleField);

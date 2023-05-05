@@ -19,3 +19,12 @@
   position: relative;
   top: 1em;
 }
+
+form {
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  margin: 2px;
+  align-self: center;
+}
