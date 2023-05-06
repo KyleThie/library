@@ -1,4 +1,3 @@
-console.log("is it working?");
 let cardContainer = document.getElementById("card-container");
 let addBtn = document.querySelector("#addBtn");
 titleField = document.querySelector("#title");
@@ -29,13 +28,18 @@ readField.addEventListener("input", (e) => {
 
 addBtn.addEventListener("click", () => {
   event.preventDefault();
-
+  if (readField.checked === true) {
+    read = "Read";
+  } else {
+    read = "Not Read";
+  }
   addBookToLibrary(newTitle, newAuthor, pageNums, read);
   console.log(myLibrary);
   showBooks();
   let formById = document.getElementById("formId");
+  // readField.checked is working!!!!
+  console.log(readField.checked);
   formById.reset();
-  console.log(formById);
 });
 let myLibrary = [];
 
@@ -73,5 +77,3 @@ function showBooks() {
     cardContainer.appendChild(singleBook);
   });
 }
-
-console.log(titleField);
