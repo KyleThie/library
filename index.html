@@ -5,12 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Fjalla+One&display=swap" rel="stylesheet">
+    
     <title>Library</title>
   </head>
   <body>
-    <div class="header">Library</div>
+    <div id="top-container">
+    <header>
+      <h1>Library</1h>
+      <img src="./images/libraryIcon.png" alt="Library icon">
+    </header>
     <div class="flex">
-      <div class="form">
+      <!-- <div class="form"> -->
         <form id="formId" action="./">
           <h1>Add</h1>
 
@@ -28,18 +36,18 @@
 
           <button id="addBtn" type="submit">Add Book</button>
         </form>
-      </div>
-      <div>
-        <form id="removeDiv" action="./">
-          <h1>Remove Book</h1>
+      <!-- </div> -->
+      <form id="removeDiv" action="./">
+          <h1>Remove</h1>
 
           <label for="remove">Enter Title to Remove: </label>
           <input id="remove" name="remove" type="text" />
 
           <button id="removeBtn" type="submit">Remove Book</button>
         </form>
-      </div>
+      
     </div>
+  </div>
     <div id="card-container">
       <!-- <div id="-1">
         <img src="./images/bookIcon.png" alt="picture of a dog" />

@@ -1,13 +1,18 @@
+// create vars for DOM elements
+
 let cardContainer = document.getElementById("card-container");
 let addBtn = document.querySelector("#addBtn");
 let removeBtn = document.querySelector("#removeBtn");
 
-let bookTitle = "";
 titleField = document.querySelector("#title");
 authorField = document.querySelector("#author");
 pageNumField = document.querySelector("#pageNum");
 readField = document.querySelector("#checkBox");
 removeField = document.querySelector("#remove");
+
+//initialize variables
+
+let bookTitle = "";
 let myLibrary = [];
 let newTitle = "";
 let newAuthor = "";
@@ -20,6 +25,8 @@ removeField.addEventListener("input", (e) => {
   bookTitleToDelete = e.target.value;
   console.log(bookTitleToDelete);
 });
+
+// attach event listeners
 
 titleField.addEventListener("input", (e) => {
   newTitle = e.target.value;
@@ -46,7 +53,7 @@ addBtn.addEventListener("click", (e) => {
     read = "Not Read";
   }
   addBookToLibrary(newTitle, newAuthor, pageNums, read);
-  // necessary showBooks() call her but seems to be duplicating previously shown
+  // necessary showBooks() call her but seems to be duplicating previously shown (fixed)
   showBooks();
   let formById = document.getElementById("formId");
 
@@ -75,6 +82,8 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(newBook);
 }
 
+// populate with some data as examples for user
+
 addBookToLibrary("Dracula", "Bram Stoker", 418, "Read");
 addBookToLibrary("Dune", "Frank Herbert", 896, "Not Read");
 addBookToLibrary("Don Quixote", "Miguel de Cervantes", 928, "Read");
@@ -82,9 +91,8 @@ addBookToLibrary("Don Quixote", "Miguel de Cervantes", 928, "Read");
 let singleBook;
 
 function showBooks() {
-  // let empty = document.createElement("div");
   cardContainer.innerHTML = "";
-  // cardContainer.replaceWith("empty");
+
   console.log(myLibrary);
   myLibrary.forEach((book) => {
     bookId += 1;
@@ -112,17 +120,16 @@ function showBooks() {
 function removeBook(bookTitleToDelete) {
   for (let i = 0; i < myLibrary.length; i++) {
     let currentBook = myLibrary[i];
-    console.log("book.title", currentBook.title);
-    console.log("param", bookTitleToDelete);
-    console.log(myLibrary.indexOf(currentBook));
-    // working up to this point - loop and variable seems to be okay
+    // console.log("book.title", currentBook.title);
+    // console.log("param", bookTitleToDelete);
+    // console.log(myLibrary.indexOf(currentBook));
 
     if (currentBook.title === bookTitleToDelete) {
       const deletedBookArr = myLibrary.splice(
         myLibrary.indexOf(currentBook),
         1
       );
-      console.log("deletedBOOKARR: ", deletedBookArr);
+      // console.log("deletedBOOKARR: ", deletedBookArr);
 
       showBooks();
     }

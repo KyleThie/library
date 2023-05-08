@@ -1,7 +1,40 @@
+/* html,
+body {
+  margin: 0;
+  height: 99%;
+  overflow: hidden;
+} */
+
+/*
+^^ experimenting with default styling / resetting.
+*/
+
+* {
+  font-family: "EB Garamond", serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+header {
+  background-color: white;
+  display: flex;
+  align-items: left;
+  text-decoration: underline;
+}
+
+#top-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 1em;
+}
+
 #card-container {
   display: flex;
   flex-wrap: wrap;
-  border: 4px solid green;
+
   gap: 2em;
 }
 
@@ -9,22 +42,14 @@
   display: flex;
 }
 
-.card button {
-  background-color: blue;
-}
-
-.delete {
-  background-color: red;
-}
-
 .card {
-  border: 1px solid black;
+  background: #21b595;
+  /* 
+  border on book cards could be cool
+  border: 0.1em solid black; */
+  border-radius: 4%;
   text-align: center;
   width: 20em;
-}
-
-.testCard {
-  border: 2px solid red;
 }
 
 .card img {
@@ -32,17 +57,31 @@
   top: 1em;
 }
 
-form {
-  background-color: green;
+#formId {
+  background-color: #ecba16;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  padding-left: 4em;
+  padding-right: 4em;
+  text-align: center;
   margin: 2px;
-  align-self: center;
+  padding-bottom: 5px;
+  border-radius: 2%;
 }
 
 #removeDiv {
-  background-color: lightblue;
-  margin: 20px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  background-color: #e4544c;
+  padding-left: 4em;
+  padding-right: 4em;
+  justify-content: space-around;
+  margin: 2px;
+  border-radius: 2%;
+}
+
+#removeDiv button {
+  position: relative;
+  top: 0.8em;
 }
