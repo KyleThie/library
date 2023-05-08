@@ -5,6 +5,14 @@
   gap: 2em;
 }
 
+.card button {
+  background-color: blue;
+}
+
+.delete {
+  background-color: red;
+}
+
 .card {
   border: 1px solid black;
   text-align: center;
@@ -27,4 +35,9 @@ form {
   width: 20%;
   margin: 2px;
   align-self: center;
+}
+
+#removeDiv {
+  background-color: lightblue;
+  margin: 20px;
 }
