@@ -17,7 +17,6 @@ let bookId = -1;
 let bookTitleToDelete = "";
 
 removeField.addEventListener("input", (e) => {
-  // e.preventDefault();
   bookTitleToDelete = e.target.value;
   console.log(bookTitleToDelete);
 });
@@ -38,15 +37,16 @@ readField.addEventListener("input", (e) => {
   read = e.target.value;
 });
 
-addBtn.addEventListener("click", () => {
-  event.preventDefault();
+addBtn.addEventListener("click", (e) => {
+  // need this e.preventdefault???
+  e.preventDefault();
   if (readField.checked === true) {
     read = "Read";
   } else {
     read = "Not Read";
   }
   addBookToLibrary(newTitle, newAuthor, pageNums, read);
-
+  // necessary showBooks() call her but seems to be duplicating previously shown
   showBooks();
   let formById = document.getElementById("formId");
 
@@ -56,6 +56,9 @@ addBtn.addEventListener("click", () => {
 removeBtn.addEventListener("click", (e) => {
   e.preventDefault();
   removeBook(bookTitleToDelete);
+  let removeById = document.getElementById("removeDiv");
+
+  removeById.reset();
 });
 
 class Book {
@@ -74,16 +77,19 @@ function addBookToLibrary(title, author, pages, read) {
 
 addBookToLibrary("Dracula", "Bram Stoker", 418, "Read");
 addBookToLibrary("Dune", "Frank Herbert", 896, "Not Read");
+addBookToLibrary("Don Quixote", "Miguel de Cervantes", 928, "Read");
 
 let singleBook;
 
 function showBooks() {
+  // let empty = document.createElement("div");
+  cardContainer.innerHTML = "";
+  // cardContainer.replaceWith("empty");
+  console.log(myLibrary);
   myLibrary.forEach((book) => {
     bookId += 1;
     const singleBook = document.createElement("div");
-    const deleteBtn = document.createElement("button");
 
-    singleBook.appendChild(deleteBtn);
     singleBook.className = "card";
     singleBookId = bookId;
 
@@ -94,23 +100,14 @@ function showBooks() {
       <h4>${book.author}</h4>
       <h4>${book.pages}</h4>
       <h4>${book.read}</h4>
-      <button>Delete</button>
-      <h4>${singleBookId}</h4>
+      
 `;
-    // singleBook.addEventListener("click", () => {
-    //   const element = document.getElementById(singleBookId);
-    //   element.remove();
-    // });
+
     singleBook.setAttribute("id", bookId);
-    // singleBook.addEventListener("click", myFunction(bookId));
-    // console.log("SINGLEBOOKID", singleBookId);
-    // console.log(myLibrary);
-    // console.log(singleBook);
+
     cardContainer.appendChild(singleBook);
   });
 }
-
-// THIS MIGHT BE KIND OF WORKING???
 
 function removeBook(bookTitleToDelete) {
   for (let i = 0; i < myLibrary.length; i++) {
@@ -126,22 +123,10 @@ function removeBook(bookTitleToDelete) {
         1
       );
       console.log("deletedBOOKARR: ", deletedBookArr);
+
+      showBooks();
     }
   }
-
-  // console.log(myLibrary);
-  // return myLibrary;
 }
-// removeBook("Dune");
 
-// function deleteBook(toDelete) {
-//   const filtered = myLibrary.filter((book) => {
-//     book.title !== toDelete;
-//   });
-//   return filtered;
-// }
-// removeBook("Dune");
-
-// Try calling removeBook with more / different entries
-// Maybe an issue with how the for loop is set up? myLibrary.length + 1???
-// removeBook("Dune");
+showBooks();
